@@ -13,33 +13,47 @@ public class EcuacionesdeSegundoGrado {
     private double a;
     private double b;
     private double c;
-    private int discriminante;
-    private int NumdeSoluciones;
-    private double raíz1;
-    private double raíz2;
-    
+   
+
+
     
     public EcuacionesdeSegundoGrado (double a, double b, double c){
+        this.a=a;
+        this.b=b;
+        this.c=c;
     }
+
+   
+            public void setCoeficienteA (double a){
+                this.a=a;
+            }
+            public void setCoeficienteB(double b){
+                this.b=b;
+            }
+            public void setCoeficienteC (double c){
+                this.c=c;
+            }
             public double getCoeficienteA (){
-                return this.a;
+                return a;
         }
             public double getCoeficienteB (){
-                return this.b;
+                return b;
             }
             public double getCoeficienteC (){
-                return this.c;
+                return c;
             }
             public int getDiscriminante (){
-                discriminante = (int) ((b*b)-(4*(a*c)));
+                int discriminante;
+                discriminante = (int) ((this.b*this.b)-(4*(this.a*this.c)));
                 return discriminante;
                 }
             public double getNumerodeSolucionesReales (){
-                if (discriminante > 0){
+                double NumdeSoluciones;
+                if (this.getDiscriminante() > 0){
                     NumdeSoluciones=2;
                 }
                 else{
-                    if (discriminante < 0){
+                    if (this.getDiscriminante() < 0){
                         NumdeSoluciones=0;
                     }
                     else{
@@ -49,11 +63,13 @@ public class EcuacionesdeSegundoGrado {
         return NumdeSoluciones;
 }
             public double getRaíz1 (){
-                if (NumdeSoluciones==2){
-                    raíz1=(-b+Math.sqrt(discriminante))/(2*a);
+                    double raíz1;
+
+                if (this.getNumerodeSolucionesReales()==2){
+                    raíz1=(-this.b+Math.sqrt(this.getDiscriminante()))/(2*this.a);
                 }else{
-                   if (NumdeSoluciones==1) {
-                       raíz1=(-b+Math.sqrt(discriminante))/(2*a);
+                   if (this.getNumerodeSolucionesReales()==1) {
+                       raíz1=(-this.b+Math.sqrt(this.getDiscriminante()))/(2*this.a);
                    }else
                        raíz1= 0;
                 }
@@ -61,10 +77,11 @@ public class EcuacionesdeSegundoGrado {
                     
 }
             public double getRaíz2 (){
-                if (NumdeSoluciones==2){
-                    raíz2=(-b+Math.sqrt(discriminante))/(2*a);
+                    double raíz2;
+                if (this.getNumerodeSolucionesReales()==2){
+                    raíz2=(-this.b-Math.sqrt(this.getDiscriminante()))/(2*this.a);
                 }else{
-                   if (NumdeSoluciones==1) {
+                   if (this.getNumerodeSolucionesReales()==1) {
                        raíz2=0;
                    }else
                        raíz2= 0;
